@@ -1,10 +1,15 @@
 const express = require('express');
-const os = require('os');
 
 const app = express();
 const port = process.ENV || 3000;
 
-console.log(os.networkInterfaces());
+app.get('/api/whoami', (req, res) => {
+    var ip = req.ip;
+    console.log(req.headers['accept-language']);
+    
+
+    res.send({ip});
+});
 
 
 
