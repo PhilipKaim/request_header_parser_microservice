@@ -4,16 +4,13 @@ const app = express();
 const port = process.ENV || 3000;
 
 app.get('/api/whoami', (req, res) => {
-    var ip = req.ip;
-    console.log(req.headers['accept-language']);
-    
+    var ipaddress = req.ip;
 
-    res.send({ip});
+    var language = req.header['accept-language'];
+    var software = req.header['user-agent'];
+
+    res.send({ ipaddress, language, software });
 });
-
-
-
-
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
