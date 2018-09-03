@@ -9,8 +9,8 @@ app.use(express.static(publicPath));
 
 app.get('/api/whoami', (req, res) => {
     var ipaddress = req.ip;
-    var language = req.headers["Accept-Language"];
-    var software = req.headers['User-Agent'];
+    var language = req.get('Accept-Language');
+    var software = req.get('User-Agent');
 
     res.send({ ipaddress, language, software });
 });
